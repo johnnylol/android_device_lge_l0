@@ -14,10 +14,10 @@
 
     <!-- If true, the text message will be split every 160 characters.
          If false, the text will never be split before being sent. -->
-    <bool name="enableSplitSMS">false</bool>
+    <bool name="enableSplitSMS">true</bool>
 
     <string name="uaProfTagName">Profile</string>
-    <string name="userAgent">LG-MS840/Android-mms\u0020</string>
+    <string name="userAgent">LG-MS770/Android-mms\u0020</string>
     <string name="uaProfUrl">http://uaprof.metropcs.net/UAProf/LG-MS770.xml</string>
     <!-- Setting for MetroPCS MMS -->
     <string name="httpParams">x-up-calling-line-id: 1##LINE1##|X-VzW-MDN: 1##LINE1##</string>
