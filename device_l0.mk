@@ -389,7 +389,6 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libtcpfinaggr.so:system/lib/libtcpfinaggr.so \
     device/lge/l0/prebuilt/lib/libxml.so:system/lib/libxml.so \
     device/lge/l0/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
-#    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
 
 # Prebuilt libraries that are needed for DRM playback
 PRODUCT_COPY_FILES += \
