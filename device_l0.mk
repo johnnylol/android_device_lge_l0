@@ -96,11 +96,6 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
     device/lge/l0/prebuilt/lib/modules/wlan.ko:system/lib/modules/wlan.ko
 
-# Video (Temp)
-#PRODUCT_COPY_FILES += \
-#    device/lge/l0/prebuilt/lib/libOmxVdec.so:/obj/lib/libOmxVdec.so \
-#    device/lge/l0/prebuilt/lib/libOmxVdec.so:/system/lib/libOmxVdec.so
-
 # Audio
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
@@ -172,11 +167,8 @@ PRODUCT_COPY_FILES += device/common/gps/gps.conf_AS:system/etc/gps.conf
 
 # Media config
 PRODUCT_COPY_FILES += \
-    device/lge/l0/prebuilt/etc/featureset.xml:system/etc/featureset.xml \
     device/lge/l0/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/l0/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/l0/prebuilt/etc/settings.xml:system/etc/settings.xml \
-    device/lge/l0/prebuilt/etc/telephony.xml:system/etc/telephony.xml
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -426,5 +418,3 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/lge/l0/l0-vendor.mk)
 
-# call dalvik heap config
-#$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
