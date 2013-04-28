@@ -94,7 +94,6 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     device/lge/l0/prebuilt/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin:/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     device/lge/l0/prebuilt/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
-    device/lge/l0/prebuilt/lib/modules/wlan.ko:system/lib/modules/wlan.ko
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -391,10 +390,6 @@ PRODUCT_PACKAGES += \
 # Torch
 PRODUCT_PACKAGES += \
     Torch
-
-# Kernel modules
-PRODUCT_COPY_FILES += \
-    device/lge/l0/prebuilt/lib/modules/wlan.ko:/system/lib/modules/wlan.ko \
 
 # Permissions
 PRODUCT_COPY_FILES += \
