@@ -53,8 +53,8 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # hostapd
-PRODUCT_PACKAGES += \
-    hostapd
+#PRODUCT_PACKAGES += \
+#    hostapd
 
 # USB
 PRODUCT_PACKAGES += \
