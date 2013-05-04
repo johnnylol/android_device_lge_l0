@@ -59,6 +59,8 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 ### 4.2.1 / 4.2.2 Changes By DM47021 ###
+# man why you putting your name all over my shit ^^^
+# just kidding, your freind hroark
 TARGET_CPU_VARIANT := krait
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 BOARD_EGL_NEEDS_LEGACY_FB := true
