@@ -35,11 +35,11 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml
 
 PRODUCT_PACKAGES += \
-    nfc.msm8960 \
     libnfc \
     libnfc_jni \
     Nfc \
     Tag
+#    nfc.msm8960 \
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -51,10 +51,6 @@ PRODUCT_PACKAGES += \
     libOmxAacEnc \
     libOmxAmrEnc \
     libstagefrighthw
-
-# hostapd
-#PRODUCT_PACKAGES += \
-#    hostapd
 
 # USB
 PRODUCT_PACKAGES += \
@@ -94,6 +90,12 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     device/lge/l0/prebuilt/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin:/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     device/lge/l0/prebuilt/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
+    device/lge/l0/prebuilt/lib/modules/wlan.ko:system/lib/modules/wlan.ko
+
+# Video (Temp)
+#PRODUCT_COPY_FILES += \
+#    device/lge/l0/prebuilt/lib/libOmxVdec.so:/obj/lib/libOmxVdec.so \
+#    device/lge/l0/prebuilt/lib/libOmxVdec.so:/system/lib/libOmxVdec.so
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -101,12 +103,12 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8960 \
     audio.primary.msm8960 \
+    audio.usb.default \
     libalsa-intf \
     libaudioutils
 
 # Graphics
 PRODUCT_PACKAGES += \
-    lights.msm8960 \
     copybit.msm8960 \
     gralloc.msm8960 \
     hwcomposer.msm8960 \
@@ -115,6 +117,11 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libQcomUI \
     libtilerenderer
+#    lights.msm8960 \
+
+# LTE on CDMA
+PRODUCT_PACKAGES += \
+    Stk
 
 # Qualcomm scripts
 PRODUCT_COPY_FILES += \
@@ -159,15 +166,20 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
+#    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 
 # GPS config
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_AS:system/etc/gps.conf
 
 # Media config
 PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/etc/featureset.xml:system/etc/featureset.xml \
     device/lge/l0/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/l0/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/lge/l0/prebuilt/etc/settings.xml:system/etc/settings.xml \
+    device/lge/l0/prebuilt/etc/telephony.xml:system/etc/telephony.xml
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -180,6 +192,7 @@ PRODUCT_COPY_FILES += \
 # apn config
 PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/apns-conf.xml:/system/etc/apns-conf.xml
+#    device/lge/l0/prebuilt/etc/spn-conf.xml:/system/etc/spn-conf.xml
 
 # Sound configs
 PRODUCT_COPY_FILES += \
@@ -272,6 +285,8 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/hw/nfc.msm8960.so:system/lib/hw/nfc.msm8960.so \
     device/lge/l0/prebuilt/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so \
     device/lge/l0/prebuilt/lib/libacdbloader.so:system/lib/libacdbloader.so \
+    device/lge/l0/prebuilt/lib/libgenlock.so:obj/lib/libgenlock.so \
+    device/lge/l0/prebuilt/lib/libgenlock.so:system/lib/libgenlock.so \
     device/lge/l0/prebuilt/lib/libami306.so:system/lib/libami306.so \
     device/lge/l0/prebuilt/lib/libaudcal.so:system/lib/libaudcal.so \
     device/lge/l0/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so \
@@ -374,14 +389,14 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libtcpfinaggr.so:system/lib/libtcpfinaggr.so \
     device/lge/l0/prebuilt/lib/libxml.so:system/lib/libxml.so \
     device/lge/l0/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
+#    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
 
 # Prebuilt libraries that are needed for DRM playback
 PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/vendor/lib/drm/libdrmwvmplugin.so:system/vendor/lib/drm/libdrmwvmplugin.so \
     device/lge/l0/prebuilt/vendor/lib/libwvdrm_L1.so:system/vendor/lib/libwvdrm_L1.so \
     device/lge/l0/prebuilt/vendor/lib/libwvm.so:system/vendor/lib/libwvm.so \
-    device/lge/l0/prebuilt/vendor/lib/libWVStreamControlAPI_L1.so:system/vendor/lib/libWVStreamControlAPI_L1.so \
-    device/lge/l0/prebuilt/etc/permissions/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml
+    device/lge/l0/prebuilt/vendor/lib/libWVStreamControlAPI_L1.so:system/vendor/lib/libWVStreamControlAPI_L1.so
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -390,6 +405,10 @@ PRODUCT_PACKAGES += \
 # Torch
 PRODUCT_PACKAGES += \
     Torch
+
+# Kernel modules
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/lib/modules/wlan.ko:/system/lib/modules/wlan.ko \
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -413,3 +432,5 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/lge/l0/l0-vendor.mk)
 
+# call dalvik heap config
+#$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
