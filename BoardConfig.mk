@@ -32,20 +32,20 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DLGE_MSM8960
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := device/lge/l0/include
 
-# test
-TARGET_NO_BOOTLOADER := true
-
 # Kernel
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGE_SIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=l0 lpj=676678
 BOARD_MKBOOTIMG_ARGS := 0x81500000
 
-TARGET_KERNEL_SOURCE := device/lge/MS770_kernel
-TARGET_KERNEL_CONFIG := l0-perf_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
+TARGET_PREBUILT_KERNEL := device/lge/l0/kernel
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel \
 
 # Platform
+TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_PRODUCT := l0_MPCS_US
@@ -53,9 +53,22 @@ TARGET_PRODUCT := l0_MPCS_US
 # Architecture
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
+
+### 4.2.1 / 4.2.2 Changes By DM47021 ###
+TARGET_CPU_VARIANT := krait
+TARGET_QCOM_DISPLAY_VARIANT := legacy
+BOARD_EGL_NEEDS_LEGACY_FB := true
+CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
+# Linaro OPTIMIZATIONS By DM47021
+TARGET_USE_O3 := true
+TARGET_USE_GRAPHITE := true
+TARGET_USE_LINARO_STRING_ROUTINES := true
+########################################
+
 
 # Krait optimizations
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
@@ -84,6 +97,8 @@ COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_FLUENCE_INCALL := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
 TARGET_USES_ION_AUDIO := true
 
 # Lights
@@ -91,8 +106,8 @@ TARGET_PROVIDES_LIBLIGHTS := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-TARGET_CUSTOM_BLUEDROID := ../../../device/lge/l0/bluetooth/bluetooth.c
-
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := ../../../device/lge/l0/bluetooth
 
 # Wifi
 WIFI_DRIVER_MODULE_NAME          := wlan
@@ -121,7 +136,4 @@ TARGET_FORCE_CPU_UPLOAD := true
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
-
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 
