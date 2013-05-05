@@ -98,6 +98,7 @@ BOARD_NEEDS_MEMORYHEAPPMEM := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Audio
+TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
@@ -139,4 +140,11 @@ TARGET_FORCE_CPU_UPLOAD := true
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
+
+# Vold
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+
+# Releasetools
+TARGET_PROVIDES_RELEASETOOLS := true
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/l0/releasetools/l0_ota_from_target_files
 

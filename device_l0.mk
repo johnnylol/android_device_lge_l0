@@ -19,27 +19,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/l0/overlay
 
-# NFC
-# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
-PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
-
-# NFC EXTRAS add-on API
+# Graphics
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-
-# NFCEE access control
-PRODUCT_COPY_FILES += \
-    device/lge/l0/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml
-
-PRODUCT_PACKAGES += \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag
-#    nfc.msm8960 \
+    copybit.msm8960 \
+    gralloc.msm8960 \
+    hwcomposer.msm8960 \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libQcomUI \
+    libtilerenderer
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -92,11 +81,6 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
     device/lge/l0/prebuilt/lib/modules/wlan.ko:system/lib/modules/wlan.ko
 
-# Video (Temp)
-#PRODUCT_COPY_FILES += \
-#    device/lge/l0/prebuilt/lib/libOmxVdec.so:/obj/lib/libOmxVdec.so \
-#    device/lge/l0/prebuilt/lib/libOmxVdec.so:/system/lib/libOmxVdec.so
-
 # Audio
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
@@ -107,17 +91,37 @@ PRODUCT_PACKAGES += \
     libalsa-intf \
     libaudioutils
 
-# Graphics
-PRODUCT_PACKAGES += \
-    copybit.msm8960 \
-    gralloc.msm8960 \
-    hwcomposer.msm8960 \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libQcomUI \
-    libtilerenderer
-#    lights.msm8960 \
+# Sound firmware
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/etc/firmware/wcd9310_anc.bin:/system/etc/firmware/wcd9310/wcd9310_anc.bin \
+    device/lge/l0/prebuilt/etc/firmware/wcd9310_mbhc.bin:/system/etc/firmware/wcd9310/wcd9310_mbhc.bin
+
+
+# Sound configs
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
+
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/lib/libaudcal.so:system/lib/libaudcal.so \
+    device/lge/l0/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so
+
+
+# snd_soc_msm
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/snd_soc_msm:/system/etc/snd_soc_msm/snd_soc_msm \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/snd_soc_msm_2x:/system/etc/snd_soc_msm/snd_soc_msm_2x
+
+# Sound effects
+PRODUCT_COPY_FILES += \
+    device/lge/vu2kt/configs/audio_effects.conf:system/etc/audio_effects.conf
+
+# Media config
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/etc/featureset.xml:system/etc/featureset.xml \
+    device/lge/l0/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/lge/l0/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/lge/l0/prebuilt/etc/settings.xml:system/etc/settings.xml \
+    device/lge/l0/prebuilt/etc/telephony.xml:system/etc/telephony.xml
 
 # LTE on CDMA
 PRODUCT_PACKAGES += \
@@ -168,18 +172,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
-#    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 
 # GPS config
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_AS:system/etc/gps.conf
-
-# Media config
-PRODUCT_COPY_FILES += \
-    device/lge/l0/prebuilt/etc/featureset.xml:system/etc/featureset.xml \
-    device/lge/l0/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    device/lge/l0/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/l0/prebuilt/etc/settings.xml:system/etc/settings.xml \
-    device/lge/l0/prebuilt/etc/telephony.xml:system/etc/telephony.xml
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -192,35 +187,6 @@ PRODUCT_COPY_FILES += \
 # apn config
 PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/apns-conf.xml:/system/etc/apns-conf.xml
-#    device/lge/l0/prebuilt/etc/spn-conf.xml:/system/etc/spn-conf.xml
-
-# Sound configs
-PRODUCT_COPY_FILES += \
-    device/lge/l0/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
-
-PRODUCT_COPY_FILES += \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/DL_REC:/system/etc/snd_soc_msm/DL_REC \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/DL_REC_2x:/system/etc/snd_soc_msm/DL_REC_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_A2DP_REC:/system/etc/snd_soc_msm/FM_A2DP_REC \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_A2DP_REC_2x:/system/etc/snd_soc_msm/FM_A2DP_REC_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_Digital_Radio:/system/etc/snd_soc_msm/FM_Digital_Radio \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_Digital_Radio_2x:/system/etc/snd_soc_msm/FM_Digital_Radio_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_REC:/system/etc/snd_soc_msm/FM_REC \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_REC_2x:/system/etc/snd_soc_msm/FM_REC_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi:/system/etc/snd_soc_msm/HiFi \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_2x:/system/etc/snd_soc_msm/HiFi_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Low_Power:/system/etc/snd_soc_msm/HiFi_Low_Power \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Low_Power_2x:/system/etc/snd_soc_msm/HiFi_Low_Power_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Rec:/system/etc/snd_soc_msm/HiFi_Rec \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Rec_2x:/system/etc/snd_soc_msm/HiFi_Rec_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/snd_soc_msm:/system/etc/snd_soc_msm/snd_soc_msm \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/snd_soc_msm_2x:/system/etc/snd_soc_msm/snd_soc_msm_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/UL_DL_REC:/system/etc/snd_soc_msm/UL_DL_REC \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/UL_DL_REC_2x:/system/etc/snd_soc_msm/UL_DL_REC_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call:/system/etc/snd_soc_msm/Voice_Call \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call_2x:/system/etc/snd_soc_msm/Voice_Call_2x \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call_IP:/system/etc/snd_soc_msm/Voice_Call_IP \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call_IP_2x:/system/etc/snd_soc_msm/Voice_Call_IP_2x
 
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
@@ -288,8 +254,6 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libgenlock.so:obj/lib/libgenlock.so \
     device/lge/l0/prebuilt/lib/libgenlock.so:system/lib/libgenlock.so \
     device/lge/l0/prebuilt/lib/libami306.so:system/lib/libami306.so \
-    device/lge/l0/prebuilt/lib/libaudcal.so:system/lib/libaudcal.so \
-    device/lge/l0/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so \
     device/lge/l0/prebuilt/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so \
     device/lge/l0/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
     device/lge/l0/prebuilt/lib/libcamera_client.so:system/lib/libcamera_client.so \
@@ -389,7 +353,6 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libtcpfinaggr.so:system/lib/libtcpfinaggr.so \
     device/lge/l0/prebuilt/lib/libxml.so:system/lib/libxml.so \
     device/lge/l0/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
-#    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
 
 # Prebuilt libraries that are needed for DRM playback
 PRODUCT_COPY_FILES += \
@@ -397,6 +360,12 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/vendor/lib/libwvdrm_L1.so:system/vendor/lib/libwvdrm_L1.so \
     device/lge/l0/prebuilt/vendor/lib/libwvm.so:system/vendor/lib/libwvm.so \
     device/lge/l0/prebuilt/vendor/lib/libWVStreamControlAPI_L1.so:system/vendor/lib/libWVStreamControlAPI_L1.so
+
+# Prebuilt to fix some things
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/lib/drm/liblog.so:system/lib/liblog.so \
+    device/lge/l0/prebuilt/lib/libnetcmdiface.so:system/lib/libnetcmdiface.so \
+    device/lge/l0/prebuilt/xbin/su:system/xbin/su
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -409,6 +378,11 @@ PRODUCT_PACKAGES += \
 # Kernel modules
 PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/modules/wlan.ko:/system/lib/modules/wlan.ko \
+
+# Lights
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:/system/lib/hw/lights.msm8960.so \
+
 
 # Permissions
 PRODUCT_COPY_FILES += \
