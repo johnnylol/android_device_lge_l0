@@ -108,8 +108,28 @@ PRODUCT_COPY_FILES += \
 
 # snd_soc_msm
 PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/DL_REC:/system/etc/snd_soc_msm/DL_REC \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/DL_REC_2x:/system/etc/snd_soc_msm/DL_REC_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_A2DP_REC:/system/etc/snd_soc_msm/FM_A2DP_REC \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_A2DP_REC_2x:/system/etc/snd_soc_msm/FM_A2DP_REC_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_Digital_Radio:/system/etc/snd_soc_msm/FM_Digital_Radio \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_Digital_Radio_2x:/system/etc/snd_soc_msm/FM_Digital_Radio_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_REC:/system/etc/snd_soc_msm/FM_REC \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/FM_REC_2x:/system/etc/snd_soc_msm/FM_REC_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi:/system/etc/snd_soc_msm/HiFi \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_2x:/system/etc/snd_soc_msm/HiFi_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Low_Power:/system/etc/snd_soc_msm/HiFi_Low_Power \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Low_Power_2x:/system/etc/snd_soc_msm/HiFi_Low_Power_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Rec:/system/etc/snd_soc_msm/HiFi_Rec \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/HiFi_Rec_2x:/system/etc/snd_soc_msm/HiFi_Rec_2x \
     device/lge/l0/prebuilt/etc/snd_soc_msm/snd_soc_msm:/system/etc/snd_soc_msm/snd_soc_msm \
-    device/lge/l0/prebuilt/etc/snd_soc_msm/snd_soc_msm_2x:/system/etc/snd_soc_msm/snd_soc_msm_2x
+    device/lge/l0/prebuilt/etc/snd_soc_msm/snd_soc_msm_2x:/system/etc/snd_soc_msm/snd_soc_msm_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/UL_DL_REC:/system/etc/snd_soc_msm/UL_DL_REC \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/UL_DL_REC_2x:/system/etc/snd_soc_msm/UL_DL_REC_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call:/system/etc/snd_soc_msm/Voice_Call \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call_2x:/system/etc/snd_soc_msm/Voice_Call_2x \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call_IP:/system/etc/snd_soc_msm/Voice_Call_IP \
+    device/lge/l0/prebuilt/etc/snd_soc_msm/Voice_Call_IP_2x:/system/etc/snd_soc_msm/Voice_Call_IP_2x
 
 # Sound effects
 PRODUCT_COPY_FILES += \

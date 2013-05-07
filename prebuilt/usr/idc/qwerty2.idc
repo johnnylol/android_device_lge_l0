@@ -13,12 +13,16 @@
 # limitations under the License.
 
 #
-# Emulator keyboard configuration file #1.
+# Emulator keyboard configuration file #2.
 #
 
-keyboard.layout = l0-keypad
-keyboard.orientationAware = 0
-keyboard.builtIn = 0
+touch.deviceType = touchScreen
+touch.orientationAware = 1
 
-cursor.mode = pointer
-cursor.orientationAware = 0
+keyboard.layout = qwerty
+keyboard.characterMap = qwerty2
+keyboard.orientationAware = 1
+keyboard.builtIn = 1
+
+cursor.mode = navigation
+cursor.orientationAware = 1

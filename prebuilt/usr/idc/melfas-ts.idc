@@ -46,4 +46,4 @@ touch.orientation.calibration = none
 touch.distance.calibration = none
 touch.distance.scale = 1
 
-keyboard.layout = d1lu-keypad
+keyboard.layout = l0-keypad
