@@ -132,13 +132,13 @@ PRODUCT_COPY_FILES += \
 
 # 2nd-init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/xbin/2nd-init:/system/xbin/2nd-init \
-    $(LOCAL_PATH)/prebuilt/xbin/cm10.sh:/system/xbin/cm10.sh \
-    $(LOCAL_PATH)/prebuilt/xbin/cm10.tar:/system/xbin/cm10.tar \
-    $(LOCAL_PATH)/prebuilt/xbin/mksh2:/system/xbin/mksh2 \
-    $(LOCAL_PATH)/prebuilt/xbin/recovery.sh:/system/xbin/recovery.sh \
-    $(LOCAL_PATH)/prebuilt/xbin/recovery.tar:/system/xbin/recovery.tar \
-    $(LOCAL_PATH)/prebuilt/xbin/taskset:/system/xbin/taskset
+    $(LOCAL_PATH)/2nd-init/2nd-init:/system/xbin/2nd-init \
+    $(LOCAL_PATH)/2nd-init/cm10.sh:/system/xbin/cm10.sh \
+    $(LOCAL_PATH)/2nd-init/cm10.tar:/system/xbin/cm10.tar \
+    $(LOCAL_PATH)/2nd-init/mksh2:/system/xbin/mksh2 \
+    $(LOCAL_PATH)/2nd-init/recovery.sh:/system/xbin/recovery.sh \
+    $(LOCAL_PATH)/2nd-init/recovery.tar:/system/xbin/recovery.tar \
+    $(LOCAL_PATH)/2nd-init/taskset:/system/xbin/taskset
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -383,7 +383,7 @@ PRODUCT_COPY_FILES += \
 # Prebuilt hack fixes
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/libnetcmdiface.so:system/lib/libnetcmdiface.so \
-    $(LOCAL_PATH)/prebuilt/xbin/su:system/xbin/su
+    $(LOCAL_PATH)/2nd-init/su:system/xbin/su
 
 # Lights
 PRODUCT_COPY_FILES += \
