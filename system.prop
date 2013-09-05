@@ -101,8 +101,8 @@ ro.ril.transmitpower=true
 ro.hwui.text_cache_width=2048
 ro.nfc.port=I2C
 persist.data_netmgrd_mtu=1428
-ro.config.vc_call_vol_steps=9
-ro.config.vc_call_vol_default=5
+ro.config.vc_call_vol_steps=20
+ro.config.vc_call_vol_default=15
 ro.hdmi.enable=true
 com.qc.hardware=true
 com.qc.hdmi_out=true
@@ -113,4 +113,11 @@ wlan.chip.version=wcnss
 wifi.interface=wlan0
 ro.crypto.fuse_sdcard=true
 dalvik.vm.dexopt-data-only=1
+
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=96m
+dalvik.vm.heapsize=256m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=8m
 

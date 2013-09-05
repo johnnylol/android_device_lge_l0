@@ -98,8 +98,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
-
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -139,6 +139,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/2nd-init/recovery.sh:/system/xbin/recovery.sh \
     $(LOCAL_PATH)/2nd-init/recovery.tar:/system/xbin/recovery.tar \
     $(LOCAL_PATH)/2nd-init/taskset:/system/xbin/taskset
+
+# Recovery
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -199,10 +203,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
     $(LOCAL_PATH)/prebuilt/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so
 
-
 # GPS
 PRODUCT_COPY_FILES += \
-    device/common/gps/gps.conf_AS:system/etc/gps.conf \
+    $(LOCAL_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/prebuilt/lib/libgps.so:system/lib/libgps.so \
     $(LOCAL_PATH)/prebuilt/lib/libgps.utils.so:system/lib/libgps.utils.so \
     $(LOCAL_PATH)/prebuilt/lib/libloc_adapter.so:system/lib/libloc_adapter.so \
