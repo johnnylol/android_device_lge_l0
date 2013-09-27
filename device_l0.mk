@@ -1,19 +1,3 @@
-#
-# Copyright (C) 2011 The CyanogenMod Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
@@ -131,18 +115,23 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/init.wlan-on-off.sh:/system/etc/init.wlan-on-off.sh
 
 # 2nd-init
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/2nd-init/2nd-init:/system/xbin/2nd-init \
-    $(LOCAL_PATH)/2nd-init/cm10.sh:/system/xbin/cm10.sh \
-    $(LOCAL_PATH)/2nd-init/cm10.tar:/system/xbin/cm10.tar \
-    $(LOCAL_PATH)/2nd-init/mksh2:/system/xbin/mksh2 \
-    $(LOCAL_PATH)/2nd-init/recovery.sh:/system/xbin/recovery.sh \
-    $(LOCAL_PATH)/2nd-init/recovery.tar:/system/xbin/recovery.tar \
-    $(LOCAL_PATH)/2nd-init/taskset:/system/xbin/taskset
+PRODUCT_PACKAGES += \
+	2nd-init \
+	cm10.sh \
+	cm10.tar \
+	mksh2 \
+	recovery.sh \
+	recovery.tar \
+	taskset
 
-# Recovery
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/2nd-init/2nd-init:/system/xbin/2nd-init \
+#    $(LOCAL_PATH)/2nd-init/cm10.sh:/system/xbin/cm10.sh \
+#    $(LOCAL_PATH)/2nd-init/cm10.tar:/system/xbin/cm10.tar \
+#    $(LOCAL_PATH)/2nd-init/mksh2:/system/xbin/mksh2 \
+#    $(LOCAL_PATH)/2nd-init/recovery.sh:/system/xbin/recovery.sh \
+#    $(LOCAL_PATH)/2nd-init/recovery.tar:/system/xbin/recovery.tar \
+#    $(LOCAL_PATH)/2nd-init/taskset:/system/xbin/taskset
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -181,7 +170,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/libsensor_test.so:system/lib/libsensor_test.so \
     $(LOCAL_PATH)/prebuilt/lib/libsensor_user_cal.so:system/lib/libsensor_user_cal.so \
     $(LOCAL_PATH)/prebuilt/lib/libsensor1.so:system/lib/libsensor1.so
-
 
 # RIL
 PRODUCT_COPY_FILES += \
@@ -402,7 +390,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # We have enough space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -410,5 +397,13 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/lge/l0/l0-vendor.mk)
 
+## header files
+$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
+
 # call dalvik heap config
 #$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Recovery
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	$(LOCAL_PATH)/recovery/fstab.l0:recovery/root/fstab.l0
