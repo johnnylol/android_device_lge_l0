@@ -1,4 +1,5 @@
 #!/sbin/sh
 
-touch /tmp/.ignorebootmessage
-echo 'version 0.1-pr0' > /tmp/version
+## Fix wtfe LG has aboot doing on reboot recovery
+mke2fs -t ext4 /dev/block/platform/msm_sdcc.1/by-name/userdata
+
