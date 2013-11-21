@@ -404,4 +404,6 @@ $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
 #$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Recovery
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/recovery/fstab.l0:recovery/root/fstab.l0
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/fstab.l0:recovery/root/fstab.l0 \
+    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
